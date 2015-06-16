@@ -13,6 +13,7 @@ class Disk extends Computer
 
 	public function description()
 	{
+		var_dump(1 . ' ' . $this->computer->description());
 		return $this->computer->description() . " and a disk";
 	}
 }

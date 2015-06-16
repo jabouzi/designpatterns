@@ -13,6 +13,7 @@ class Monitor extends Computer
 
 	public function description()
 	{
+		var_dump(2 . ' ' . $this->computer->description());
 		return $this->computer->description() . " and a Monitor";
 	}
 }
