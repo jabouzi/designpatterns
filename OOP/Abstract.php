@@ -39,9 +39,34 @@ class Rectangle extends Shape
 	}
 }
 
+abstract class test
+{
+	public function set()
+	{
+		echo 'Set method in an abstract class';
+		echo "\n";
+	}
+	
+	protected function get()
+	{
+		echo 'Get method in an abstract class';
+		echo "\n";
+	}
+}
+
+class impTest extends test
+{
+	
+}
+
 $r = new Rectangle();
 $r->setValues(15, 3);
 echo $r->surface() . "\n"; // echo 45
 $t = new Triangle();
 $t->setValues(15, 3);
 echo $t->surface() . "\n"; // echo 22.5
+
+
+$test = new impTest();
+$test->set();
+$test->get(); // PHP Fatal error:  Call to protected method test::get() from context
