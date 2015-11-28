@@ -22,5 +22,5 @@ class pet
 
 $jack = new Pet( 'Jack' );
 $apple = new Apple();
-$jack->eatApple( $apple );
+$jack->eatApple( new Apple() );
 echo $jack->getEnergy();
