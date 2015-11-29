@@ -1,8 +1,6 @@
 <?php
 
-//~ namespace DesignPatterns\Behavioral\Strategy;
-
-//~ include 'ComparatorInterface.php';
+namespace DesignPatterns\Behavioral\Strategy;
 
 /**
  * Class IdComparator

@@ -1,52 +1,31 @@
 <?php
 
-//~ namespace DesignPatterns\Behavioral\Strategy;
+namespace DesignPatterns\Behavioral\Strategy;
 
-//~ use DesignPatterns\Behavioral\Strategy\DateComparator;
-//~ use DesignPatterns\Behavioral\Strategy\IdComparator;
-//~ use DesignPatterns\Behavioral\Strategy\ObjectCollection;
-//~ use DesignPatterns\Behavioral\Strategy\Strategy;
+use DesignPatterns\Behavioral\Strategy\DateComparator as DateComparator;
+use DesignPatterns\Behavioral\Strategy\IdComparator as IdComparator;
+use DesignPatterns\Behavioral\Strategy\ObjectCollection as ObjectCollection;
+use DesignPatterns\Behavioral\Strategy\Strategy\ComparatorInterface as ComparatorInterface;
 
-include 'ComparatorInterface.php';
-include 'ObjectCollection.php';
-include 'IdComparator.php';
-include 'DateComparator.php';
 
 /**
  * Tests for Strategy pattern
  */
-class StrategyTest /*extends \PHPUnit_Framework_TestCase*/
-{
+class StrategyTest
+{	
+	public static function load($class)
+	{
+		$filename = BASE_PATH . '/' . str_replace('\\', '/', $class) . '.php';
+		include($filename);
+	}
 
     public function getIdCollection()
-    {
-        //~ return array(
-            //~ array(
-                //~ array(array('id' => 2), array('id' => 1), array('id' => 3)),
-                //~ array('id' => 1)
-            //~ ),
-            //~ array(
-                //~ array(array('id' => 3), array('id' => 2), array('id' => 1)),
-                //~ array('id' => 1)
-            //~ ),
-        //~ );
-        
+    {        
         return array(array('id' => 2), array('id' => 1), array('id' => 3));
     }
 
     public function getDateCollection()
     {
-        //~ return array(
-            //~ array(
-                //~ array(array('date' => '2014-03-03'), array('date' => '2015-03-02'), array('date' => '2013-03-01')),
-                //~ array('date' => '2013-03-01')
-            //~ ),
-            //~ array(
-                //~ array(array('date' => '2014-02-03'), array('date' => '2013-02-01'), array('date' => '2015-02-02')),
-                //~ array('date' => '2013-02-01')
-            //~ ),
-        //~ );
-        
         return array(array('date' => '2014-03-03'), array('date' => '2015-03-02'), array('date' => '2013-03-01'));
     }
 
@@ -60,9 +39,6 @@ class StrategyTest /*extends \PHPUnit_Framework_TestCase*/
         $elements = $obj->sort();
         
         return $elements;
-
-        //~ $firstElement = array_shift($elements);
-        //~ $this->assertEquals($expected, $firstElement);
     }
 
     /**
@@ -75,11 +51,12 @@ class StrategyTest /*extends \PHPUnit_Framework_TestCase*/
         $elements = $obj->sort();
         
         return $elements;
-
-        //~ $firstElement = array_shift($elements);
-        //~ $this->assertEquals($expected, $firstElement);
     }
 }
+
+define('BASE_PATH', '/Users/skanderjabouzi/Development/DesignPatternsAndOOP');
+
+spl_autoload_register(__NAMESPACE__.'\StrategyTest::load');
 
 $test = new StrategyTest();
 print_r($test->testIdComparator($test->getIdCollection()));
