@@ -2,7 +2,7 @@
 
 namespace DesignPatterns\Structural\Decorator;
 
-class Cd extends Computer
+class Cd extends ComponentDecorator
 {
     public $computer;
 

@@ -2,7 +2,7 @@
 
 namespace DesignPatterns\Structural\Decorator;
 
-abstract class ComponentDecorator extends Computer
+abstract class ComponentDecorator
 {
-	public function description();
+	public abstract function description();
 }

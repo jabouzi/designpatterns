@@ -2,7 +2,7 @@
 
 namespace DesignPatterns\Structural\Decorator;
 
-class Disk extends Computer
+class Disk extends ComponentDecorator
 {
     public $computer;
 

@@ -2,7 +2,7 @@
 
 namespace DesignPatterns\Structural\Decorator;
 
-class Monitor extends Computer
+class Monitor extends ComponentDecorator
 {
     public $computer;
     

@@ -23,7 +23,7 @@ class DecoratorTest
 		$computer = new Decorator\Monitor($computer);
 		$computer = new Decorator\Cd($computer);
         //$computer = new Decorator\ComponentDecorator();
-        return $computer->description();
+        return 'You are getting a '.$computer->description();
     }
 }
 

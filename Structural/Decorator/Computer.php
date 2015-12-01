@@ -2,7 +2,7 @@
 
 namespace DesignPatterns\Structural\Decorator;
 
-class Computer
+class Computer extends ComponentDecorator
 {
 	public function __contruct()
 	{
