@@ -1,6 +1,6 @@
 <?php
 
-namespace DesignPatterns\Creational\FactoryMethod;
+namespace DesignPatterns\Creational\Factory;
 
 /**
  * VehicleInterface is a contract for a vehicle

@@ -1,13 +1,13 @@
 <?php
 
-namespace DesignPatterns\Creational\FactoryMethod;
+namespace DesignPatterns\Creational\Factory;
 
-use DesignPatterns\Creational\FactoryMethod\VehicleInterface as VehicleInterface;
-use DesignPatterns\Creational\FactoryMethod\FactoryMethod as FactoryMethod;
-use DesignPatterns\Creational\FactoryMethod\GermanFactory as GermanFactory;
-use DesignPatterns\Creational\FactoryMethod\ItalianFactory as ItalianFactory;
-use DesignPatterns\Creational\FactoryMethod\Ferrari as Ferrari;
-use DesignPatterns\Creational\FactoryMethod\Porsche as Porsche;
+use DesignPatterns\Creational\Factory\FactoryMethod as FactoryMethod;
+use DesignPatterns\Creational\Factory\VehicleInterface as VehicleInterface;
+use DesignPatterns\Creational\Factory\GermanFactory as GermanFactory;
+use DesignPatterns\Creational\Factory\ItalianFactory as ItalianFactory;
+use DesignPatterns\Creational\Factory\Ferrari as Ferrari;
+use DesignPatterns\Creational\Factory\Porsche as Porsche;
 
 /**
  * FactoryMethodTest tests the factory method pattern
@@ -23,7 +23,6 @@ class FactoryMethodTest
     
     public static function load($class)
 	{
-		echo $class.PHP_EOL;
 		$filename = BASE_PATH . '/' . str_replace('\\', '/', $class) . '.php';
 		include($filename);
 	}
@@ -45,6 +44,7 @@ class FactoryMethodTest
         // about the factory, all we know is it can produce vehicle
         foreach ($this->type as $oneType) {
             $vehicle = $shop->create($oneType);
+            var_dump($vehicle);
         }
     }
 
@@ -59,7 +59,7 @@ class FactoryMethodTest
     }
 }
 
-define('BASE_PATH', '/Users/skanderjabouzi/Development/DesignPatternsAndOOP');
+define('BASE_PATH', str_replace('/DesignPatterns/Creational/Factory', '', __DIR__));
 
 spl_autoload_register(__NAMESPACE__.'\FactoryMethodTest::load');
 

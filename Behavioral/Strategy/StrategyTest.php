@@ -5,7 +5,7 @@ namespace DesignPatterns\Behavioral\Strategy;
 use DesignPatterns\Behavioral\Strategy\DateComparator as DateComparator;
 use DesignPatterns\Behavioral\Strategy\IdComparator as IdComparator;
 use DesignPatterns\Behavioral\Strategy\ObjectCollection as ObjectCollection;
-use DesignPatterns\Behavioral\Strategy\Strategy\ComparatorInterface as ComparatorInterface;
+use DesignPatterns\Behavioral\Strategy\ComparatorInterface as ComparatorInterface;
 
 
 /**
@@ -54,7 +54,7 @@ class StrategyTest
     }
 }
 
-define('BASE_PATH', '/Users/skanderjabouzi/Development/DesignPatternsAndOOP');
+define('BASE_PATH', str_replace('/DesignPatterns/Behavioral/Strategy', '', __DIR__));
 
 spl_autoload_register(__NAMESPACE__.'\StrategyTest::load');
 
