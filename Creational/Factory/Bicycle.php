@@ -1,6 +1,6 @@
 <?php
 
-namespace DesignPatterns\Creational\FactoryMethod;
+namespace DesignPatterns\Creational\Factory;
 
 /**
  * Bicycle is a bicycle
