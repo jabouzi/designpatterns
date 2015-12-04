@@ -7,7 +7,7 @@ class PurchaseRequest
     private $amount;
     private $purpose;
 
-    public PurchaseRequest($amount, $purpose) {
+    public function __construct($amount, $purpose) {
         $this->amount = $amount;
         $this->purpose = $purpose;
     }

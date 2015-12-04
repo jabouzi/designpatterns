@@ -2,27 +2,38 @@
 
 namespace DesignPatterns\Behavioral\ChainOfResponsibility;
 
+use DesignPatterns\Behavioral\ChainOfResponsibility\DirectorPPower as DirectorPPower;
+use DesignPatterns\Behavioral\ChainOfResponsibility\ManagerPPower as ManagerPPower;
+use DesignPatterns\Behavioral\ChainOfResponsibility\PresidentPPower as PresidentPPower;
+use DesignPatterns\Behavioral\ChainOfResponsibility\PurchasePower as PurchasePower;
+use DesignPatterns\Behavioral\ChainOfResponsibility\PurchaseRequest as PurchaseRequest;
+use DesignPatterns\Behavioral\ChainOfResponsibility\VicePresidentPPower as VicePresidentPPower;
+
 class ChainOfResponsibilityTest 
 {
-    public static function main(String[] args) {
-        ManagerPPower manager = new ManagerPPower();
-        DirectorPPower director = new DirectorPPower();
-        VicePresidentPPower vp = new VicePresidentPPower();
-        PresidentPPower president = new PresidentPPower();
-        manager->setSuccessor(director);
-        director->setSuccessor(vp);
-        vp->setSuccessor(president);
+	public static function load($class)
+	{
+		$filename = BASE_PATH . '/' . str_replace('\\', '/', $class) . '.php';
+		include($filename);
+	}
 
-        // Press Ctrl.C to end->
-        try {
-            while (true) {
-                echo("Enter the amount to check who should approve your expenditure->");
-                System->out->print(">");
-                double d = Double->parseDouble(new BufferedReader(new InputStreamReader(System->in))->readLine());
-                manager->processRequest(new PurchaseRequest(d, "General"));
-           }
-        } catch(Exception e) {
-            System->exit(1);
-        }
+    public function test($amount) {
+        $manager = new ManagerPPower();
+        $director = new DirectorPPower();
+        $vp = new VicePresidentPPower();
+        $president = new PresidentPPower();
+        $manager->setSuccessor($director);
+        $director->setSuccessor($vp);
+        $vp->setSuccessor($president);
+      
+        $manager->processRequest(new PurchaseRequest($amount, "General"));
     }
 }
+
+define('BASE_PATH', str_replace('/DesignPatterns/Behavioral/ChainOfResponsibility', '', __DIR__));
+
+spl_autoload_register(__NAMESPACE__.'\ChainOfResponsibilityTest::load');
+
+$chainOfResponsibilityTest = new ChainOfResponsibilityTest();
+$chainOfResponsibilityTest->test(40000);
+echo PHP_EOL;

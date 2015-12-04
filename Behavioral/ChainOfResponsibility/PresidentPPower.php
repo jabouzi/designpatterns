@@ -17,7 +17,7 @@ class PresidentPPower extends PurchasePower {
         {
             echo("President will approve $" . $request->getAmount());
         } 
-        else if ($this->successor != null) 
+        else
         {
             echo( "Your request for $" . $request->getAmount() . " needs a board meeting!");
         }
