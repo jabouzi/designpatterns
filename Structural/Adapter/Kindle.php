@@ -7,11 +7,21 @@ namespace DesignPatterns\Structural\Adapter;
  */
 class Kindle implements EBookInterface
 {
+	public $pageNumber;
+	
+	function __construct()
+    {
+
+	}
+	
     /**
      * {@inheritdoc}
      */
     public function pressNext()
     {
+		$this->pageNumber++;
+		echo ' Page number : '.$this->pageNumber;
+		echo PHP_EOL;
     }
 
     /**
@@ -19,5 +29,9 @@ class Kindle implements EBookInterface
      */
     public function pressStart()
     {
+		$this->pageNumber = 1;
+		echo 'eBook opened';
+		echo ' Page number : '.$this->pageNumber;
+		echo PHP_EOL;
     }
 }

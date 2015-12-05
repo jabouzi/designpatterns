@@ -1,41 +1,51 @@
 <?php
 
-namespace DesignPatterns\Structural\Adapter\Tests;
+namespace DesignPatterns\Structural\Adapter;
 
-use DesignPatterns\Structural\Adapter\EBookAdapter;
-use DesignPatterns\Structural\Adapter\Kindle;
-use DesignPatterns\Structural\Adapter\PaperBookInterface;
-use DesignPatterns\Structural\Adapter\Book;
+use DesignPatterns\Structural\Adapter\EBookAdapter as EBookAdapter;
+use DesignPatterns\Structural\Adapter\Kindle as Kindle;
+use DesignPatterns\Structural\Adapter\PaperBookInterface as PaperBookInterface;
+use DesignPatterns\Structural\Adapter\Book as Book;
 
-/**
- * AdapterTest shows the use of an adapted e-book that behave like a book
- * You don't have to change the code of your client
- */
-class AdapterTest extends \PHPUnit_Framework_TestCase
+
+class AdapterTest
 {
-    /**
-     * @return array
-     */
-    public function getBook()
-    {
-        return array(
-            array(new Book()),
-            // we build a "wrapped" electronic book in the adapter
-            array(new EBookAdapter(new Kindle()))
-        );
-    }
+	public static function load($class)
+	{
+		$filename = BASE_PATH . '/' . str_replace('\\', '/', $class) . '.php';
+		include($filename);
+	}
 
-    /**
-     * This client only knows paper book but surprise, surprise, the second book
-     * is in fact an electronic book, but both work the same way
-     *
-     * @param PaperBookInterface $book
-     *
-     * @dataProvider getBook
-     */
-    public function testIAmAnOldClient(PaperBookInterface $book)
+    public function test()
     {
+		$book = new Book();
         $book->open();
         $book->turnPage();
+        $book->turnPage();
+        $book->turnPage();
+        $book->turnPage();
+        $book->turnPage();
+        
+        $kindle = new Kindle();
+        $kindle->pressStart();
+        $kindle->pressNext();
+        $kindle->pressNext();
+        $kindle->pressNext();
+        
+        $kindleAdapter = new EBookAdapter($kindle);
+        $kindleAdapter->open();
+        $kindleAdapter->turnPage();
+        $kindleAdapter->turnPage();
+        $kindleAdapter->turnPage();
+        $kindleAdapter->turnPage();
+        $kindleAdapter->turnPage();
+        $kindleAdapter->turnPage();
     }
 }
+
+define('BASE_PATH', str_replace('/DesignPatterns/Structural/Adapter', '', __DIR__));
+
+spl_autoload_register(__NAMESPACE__.'\AdapterTest::load');
+
+$adapterTest = new AdapterTest();
+$adapterTest->test();
