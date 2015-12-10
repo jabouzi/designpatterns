@@ -1,45 +1,47 @@
-import java.util.*;
+<?php
 
-public class AutomotiveRobotBuilder implements RobotBuilder
+namespace DesignPatterns\Creational\Builder; 
+
+class AutomotiveRobotBuilder implements RobotBuilder
 {
-  AutomotiveRobotBuildable robot;
-  ArrayList actions; 
+	public $robot;
+	public $actions; 
 
-  public AutomotiveRobotBuilder()
-  {
-    robot = new AutomotiveRobotBuildable();
-    actions = new ArrayList();
-  }
-  
-  public void addStart()
-  {
-    actions.add(new Integer(1)); 
-  }
+	public function __construct()
+	{
+		$this->robot = new AutomotiveRobotBuildable();
+		$this->actions = array();
+	}
 
-  public void addGetParts()
-  {
-    actions.add(new Integer(2)); 
-  }
+	public function addStart()
+	{
+		$this->actions[] = 1; 
+	}
 
-  public void addAssemble()
-  {
-    actions.add(new Integer(3)); 
-  }
+	public function addGetParts()
+	{
+		$this->actions[] = 2; 
+	}
 
-  public void addTest()
-  {
-    actions.add(new Integer(4)); 
-  }
+	public function addAssemble()
+	{
+		$this->actions[] = 3; 
+	}
 
-  public void addStop()
-  {
-    actions.add(new Integer(5)); 
-  }
+	public function addTest()
+	{
+		$this->actions[] = 4; 
+	}
 
-  public RobotBuildable getRobot()
-  {
-    robot.loadActions(actions);
-    return robot;
-  }
+	public function addStop()
+	{
+		$this->actions[] = 5; 
+	}
+
+	public function getRobot()
+	{
+		$this->robot->loadActions($this->actions);
+		return $this->robot;
+	}
 
 }

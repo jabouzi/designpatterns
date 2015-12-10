@@ -1,29 +1,33 @@
-public class AutomotiveRobot extends RobotTemplate
+<?php
+
+namespace DesignPatterns\Behavioral\Template;
+
+class AutomotiveRobot extends RobotTemplate
 {
-  private String name;
+  private  $name;
 
-  public AutomotiveRobot(String n)
-  {
-    name = n;
-  }
+	public function __construct($n)
+	{
+		$this->name = $n;
+	}
 
-  public void getParts()
-  {
-    System.out.println("Getting a carburetor....");
-  }
+	public function getParts()
+	{
+		echo("Getting a carburetor....\n");
+	}
 
-  public void assemble()
-  {
-    System.out.println("Installing the carburetor....");
-  }
+	public function assemble()
+	{
+		echo("Installing the carburetor....\n");
+	}
 
-  public void test()
-  {
-    System.out.println("Revving the engine....");
-  }
+	public function test()
+	{
+		echo("Revving the engine....\n");
+	}
 
-  public String getName()
-  {
-    return name;
-  }
+	public function getName()
+	{
+		return $this->name;
+	}
 }

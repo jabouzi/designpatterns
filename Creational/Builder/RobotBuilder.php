@@ -1,9 +1,13 @@
-public interface RobotBuilder 
+<?php
+
+namespace DesignPatterns\Creational\Builder;
+
+interface RobotBuilder 
 {
-  public void addStart();
-  public void addGetParts();
-  public void addAssemble();
-  public void addTest();
-  public void addStop();
-  public RobotBuildable getRobot();
+	public function addStart();
+	public function addGetParts();
+	public function addAssemble();
+	public function addTest();
+	public function addStop();
+	public function getRobot();
 }

@@ -1,4 +1,8 @@
-public interface RobotBuildable
+<?php
+
+namespace DesignPatterns\Creational\Builder;
+
+interface RobotBuildable
 {
-  public void go();
+	public function go();
 }

@@ -1,36 +1,40 @@
-public abstract class RobotTemplate
+<?php
+
+namespace DesignPatterns\Behavioral\Template;
+
+abstract class RobotTemplate
 {
-  public final void go()
-  {
-    start();
-    getParts();
-    assemble();
-    test();
-    stop();    
-  }
+	public function go()
+	{
+		$this->start();
+		$this->getParts();
+		$this->assemble();
+		$this->test();
+		$this->stop();    
+	}
 
-  public void start()
-  {
-    System.out.println("Starting....");
-  }
+	public function start()
+	{
+		echo("Starting....\n");
+	}
 
-  public void getParts()
-  {
-    System.out.println("Getting parts....");
-  }
+	public function getParts()
+	{
+		echo("Getting parts....\n");
+	}
 
-  public void assemble()
-  {
-    System.out.println("Assembling....");
-  }
+	public function assemble()
+	{
+		echo("Assembling....\n");
+	}
 
-  public void test()
-  {
-    System.out.println("Testing....");
-  }
+	public function test()
+	{
+		echo("Testing....\n");
+	}
 
-  public void stop()
-  {
-    System.out.println("Stopping....");
-  }
+	public function stop()
+	{
+		echo("Stopping....\n");
+	}
 }

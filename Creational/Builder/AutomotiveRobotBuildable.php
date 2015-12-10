@@ -1,65 +1,66 @@
-import java.util.*;
+<?php
 
-public class AutomotiveRobotBuildable implements RobotBuildable
+namespace DesignPatterns\Creational\Builder;
+
+class AutomotiveRobotBuildable implements RobotBuildable
 {
-  ArrayList actions;
+	public $actions;
 
-  public AutomotiveRobotBuildable()
-  {
-  }
+	public function __construct()
+	{
+		$this->actions = array();
+	}
 
-  public final void go()
-  {
-    Iterator itr = actions.iterator();
+	public function go()
+	{
+		foreach($this->actions as $action) {
+			switch ((int)$action){
+			case 1: 
+				$this->start();
+				break;
+			case 2: 
+				$this->getParts();
+				break;
+			case 3: 
+				$this->assemble();
+				break;
+			case 4: 
+				$this->test();
+				break;
+			case 5: 
+				$this->stop();
+				break;
+			}
+		}
+	}
 
-    while(itr.hasNext()) {
-      switch ((new Integer(itr.next().toString())).intValue()){
-        case 1: 
-          start();
-          break;
-        case 2: 
-          getParts();
-          break;
-        case 3: 
-          assemble();
-          break;
-        case 4: 
-          test();
-          break;
-        case 5: 
-          stop();
-          break;
-      }
-    }
-  }
+	public function start()
+	{
+		echo("Starting....\n");
+	}
 
-  public void start()
-  {
-    System.out.println("Starting....");
-  }
+	public function getParts()
+	{
+		echo("Getting a carburetor....\n");
+	}
 
-  public void getParts()
-  {
-    System.out.println("Getting a carburetor....");
-  }
+	public function assemble()
+	{
+		echo("Installing the carburetor....\n");
+	}
 
-  public void assemble()
-  {
-    System.out.println("Installing the carburetor....");
-  }
+	public function test()
+	{
+		echo("Revving the engine....\n");
+	}
 
-  public void test()
-  {
-    System.out.println("Revving the engine....");
-  }
+	public function stop()
+	{
+		echo("Stopping....\n");
+	}
 
-  public void stop()
-  {
-    System.out.println("Stopping....");
-  }
-
-  public void loadActions(ArrayList a)
-  {
-    actions = a;
-  }
+	public function loadActions($a)
+	{
+		$this->actions = $a;
+	}
 }

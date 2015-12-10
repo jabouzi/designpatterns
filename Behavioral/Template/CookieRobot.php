@@ -1,29 +1,33 @@
-public class CookieRobot extends RobotTemplate
+<?php
+
+namespace DesignPatterns\Behavioral\Template;
+
+class CookieRobot extends RobotTemplate
 {
-  private String name;
+	private $name;
 
-  public CookieRobot(String n)
-  {
-     name = n;
-  }
+	public function __construct($n)
+	{
+		$this->name = $n;
+	}
 
-  public void getParts()
-  {
-    System.out.println("Getting a flour and sugar....");
-  }
+	public function getParts()
+	{
+		echo("Getting a flour and sugar....\n");
+	}
 
-  public void assemble()
-  {
-    System.out.println("Baking a cookie....");
-  }
+	public function assemble()
+	{
+		echo("Baking a cookie....\n");
+	}
 
-  public void test()
-  {
-    System.out.println("Crunching a cookie....");
-  }
+	public function test()
+	{
+		echo("Crunching a cookie....\n");
+	}
 
-  public String getName()
-  {
-    return name;
-  }
+	public function getName()
+	{
+		return $this->name;
+	}
 }
